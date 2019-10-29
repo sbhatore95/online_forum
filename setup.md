@@ -3,6 +3,7 @@ ___
 These instructions are for Ubuntu 16.04 system. I followed this guide: https://gorails.com/setup/ubuntu/16.04
 ___
 1. **Installing Ruby**
+
 The first step is to install some dependencies for Ruby and Rails.
 ```bash
 sudo apt install curl
@@ -34,6 +35,7 @@ The last thing is to install bundler
 gem install bundler
 ```
 2. **Installing Rails**
+
 We will install the Rails 6.0.0
 ```bash
 gem install rails -v 6.0.0
