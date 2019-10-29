@@ -1,43 +1,48 @@
-**Setup for Web application (Online Forum, SpiceWorks)**
+**Setup Instructions for Web application (Online Forum, SpiceWorks)**
 ___
-The instructions will work for linux system only. For other systems, I am
-providing links to online tutorials. Let me know if you get stuck anywhere or
-the system doesn't work. 
+These instructions are for Ubuntu 16.04 system. I followed this guide: https://gorails.com/setup/ubuntu/16.04
 ___
-
-1. **Install Angular**
-
-For this, you should have npm installed on your device. Link to install npm: https://linuxize.com/post/how-to-install-node-js-on-ubuntu-18.04/
-
-After installing npm, run this command to install angular.
+1. **Installing Ruby**
+The first step is to install some dependencies for Ruby and Rails.
 ```bash
-npm install -g @angular/cli
+sudo apt install curl
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+sudo apt-get update
+sudo apt-get install git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev nodejs yarn
 ```
-
-
-2. **Install Ruby on Rails**
-
-For this, you should have ruby version manager installed on your system. I am
-working with rbenv. I followed this guide to install rbenv: https://github.com/rbenv/rbenv. Steps to install rbenv:
+Next, we are going to install Ruby using rbenv
 ```bash
+cd
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-cd ~/.rbenv && src/configure && make -C src
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-~/.rbenv/bin/rbenv init
-```
-After running these commands, restart your terminal/shell for changes to take
-effect. Run this command to see if everything is working correctly:
-```bash
-curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
-```
-After this, you can install ruby-build to so that new versions of ruby can
-be installed.
-```bash
-mkdir -p "$(rbenv root)"/plugins
-git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
-```
-After installing ruby build, run this command to install ruby version 2.6.5.
-```bash
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+exec $SHELL
+
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+exec $SHELL
+
 rbenv install 2.6.5
+rbenv global 2.6.5
+ruby -v
+```
+The last thing is to install bundler
+```bash
+gem install bundler
+```
+2. **Installing Rails**
+We will install the Rails 6.0.0
+```bash
+gem install rails -v 6.0.0
+```
+Run the following command to make the rails executable available:
+```bash
+rbenv rehash
+```
+Run this to see if Rails is currently installed:
+```bash
+rails -v
 ```
