@@ -7,8 +7,7 @@ ___
 
 1. **Install Angular**
 
-For this, you should have npm installed on your device. Link to install npm, 
-click [here]:https://linuxize.com/post/how-to-install-node-js-on-ubuntu-18.04/
+For this, you should have npm installed on your device. Link to install npm: https://linuxize.com/post/how-to-install-node-js-on-ubuntu-18.04/
 ```bash
 npm install -g @angular/cli
 ```
