@@ -1,0 +1,40 @@
+<% if current_user %>
+  Logged in as <%= current_user.email %>.
+  <%= link_to "Log Out", logout_path %>
+  <%= link_to "Ask Question", ask_path %>
+  <%= link_to 'Your Questions', questions_path %>
+  <%= link_to 'All Questions', showall_path %>
+<p id="notice"><%= notice %></p>
+
+<h1>Questions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Question</th>
+      <th>Comments</th>
+      <th>Votes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= User.find(question.user)[:name] %></td>
+        <td><%= question.value %></td>
+        <td><%= question.comments %></td>
+        <td><%= question.votes %></td>
+        <td><%= link_to 'Show', question %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% else %>
+  <%= link_to "Sign Up", signup_path %> or 
+  <%= link_to "Log In", login_path %>
+<% end %>

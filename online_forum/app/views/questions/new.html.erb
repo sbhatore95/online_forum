@@ -1,0 +1,12 @@
+<% if current_user %>
+  Logged in as <%= current_user.email %>.
+  <%= link_to "Log Out", logout_path %>
+  <%= link_to "Ask Question", ask_path %>
+  <%= link_to 'Your Questions', questions_path %>
+  <%= link_to 'All Questions', showall_path %>
+<h1>New Question</h1>
+<%= render 'form', question: @question %>
+<% else %>
+  <%= link_to "Sign Up", signup_path %> or 
+  <%= link_to "Log In", login_path %>
+<% end %>
