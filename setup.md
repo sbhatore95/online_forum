@@ -51,6 +51,7 @@ rails -v
 You are good to go. Read **README** file for information on how to run the application and the expected outcome on running.
 
 3. **Common Errors** (After reading README file)
+
 If an error comes after running  which says "FATAL: Listen error: unable to monitor directories for changes.". Then, run the following:
 ```bash
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
