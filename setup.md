@@ -1,6 +1,7 @@
+You can find this same file and the code in https://github.com/sbhatore95/online_forum.
 **Setup Instructions for Web application (Online Forum, SpiceWorks)**
 ___
-These instructions are for Ubuntu 16.04 system. I followed this guide: https://gorails.com/setup/ubuntu/16.04
+These instructions are for Ubuntu 16.04 system. I followed this guide: https://gorails.com/setup/ubuntu/16.04 . 
 ___
 1. **Installing Ruby**
 
