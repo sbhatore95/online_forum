@@ -16,10 +16,8 @@ cd online_forum
 bundle install
 ```
 
-3. Next, run these commands to drop any existing data and populate the database with seeds.rb:
+3. Next, run these commands to migrate records and populate the database with seeds.rb:
 ```bash
-rake db:drop:all
-rake db:create:all
 rake db:migrate
 rake db:seed
 ```
