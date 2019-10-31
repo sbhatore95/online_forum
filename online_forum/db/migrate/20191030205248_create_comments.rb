@@ -8,7 +8,6 @@ class CreateComments < ActiveRecord::Migration[5.2]
       t.string :value
 
       t.timestamps
-      drop_table :comments
     end
   end
 end

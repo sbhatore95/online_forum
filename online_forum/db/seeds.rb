@@ -1,7 +1,21 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+User.create("email"=>"sbhatore95@gmail.com", "password_digest"=>"$2a$12$tJ3JoD/etE.U8E0BOtcuH..cx6GzXop.K5nq3ht9ihQZwyrJsyZEa", "name"=>"sbhatore95", "questions"=>nil, "comments"=>nil)
+User.create("email"=>"johndoe@google.com", "password_digest"=>"$2a$12$1rZoOBRNEeHq3Dcuu.hqNe0vPGb1n9Q/mER/ZdhnLtzU2pP/sJQg2", "name"=>"john", "questions"=>nil, "comments"=>nil)
+User.create("email"=>"loremipsum@live.com", "password_digest"=>"$2a$12$dbD0zgrP/juJ3dMLh2UWduycD07R71IA5KUi7vjv7n39Tr65ahKxO", "name"=>"loremipsum", "questions"=>nil, "comments"=>nil)
+User.create("email"=>"yashkhandelwal@gmail.com", "password_digest"=>"$2a$12$2Epbey8jcChW0WY.RNzKtOraNmxTxoRdnzgQKpBIE3HRTGGxgTYTG", "name"=>"khandelwal", "questions"=>nil, "comments"=>nil)
+Question.create("user"=>"3", "value"=>"How to make great pasta?", "comments"=>"1,5", "votes"=>nil)
+Question.create("user"=>"1", "value"=>"How to be a genius soccer player?", "comments"=>"3", "votes"=>nil)
+Question.create("user"=>"1", "value"=>"How to excel at academics?", "comments"=>"2,4", "votes"=>nil)
+Question.create("user"=>"4", "value"=>"I want to become a billionaire? How to do it?", "comments"=>"6,8", "votes"=>nil)
+Question.create("user"=>"2", "value"=>"I want to name my daughter. Any suggestions?", "comments"=>"7", "votes"=>nil)
+Comment.create("user"=>"1", "question"=>"1", "reply"=>"1,2,4", "votes"=>nil, "value"=>"Follow recipes on Youtube. The channel named KhanaKhajana is my favorite. Hope this helps.")
+Comment.create("user"=>"3", "question"=>"3", "reply"=>nil, "votes"=>nil, "value"=>"I can help you with that. Log on to my youtube channel at Errichto. There are tons of videos there on this.")
+Comment.create("user"=>"4", "question"=>"2", "reply"=>"3", "votes"=>nil, "value"=>"You are already a genius. You just don't know it yet. Keep going!!")
+Comment.create("user"=>"2", "question"=>"3", "reply"=>nil, "votes"=>nil, "value"=>"Oh! this is an easy one. Just keep studying and believe in yourself!!")
+Comment.create("user"=>"2", "question"=>"1", "reply"=>nil, "votes"=>nil, "value"=>"Yum Yum !! Following this.")
+Comment.create("user"=>"2", "question"=>"4", "reply"=>nil, "votes"=>nil, "value"=>"Read inspirational books and work on yourself. Increase your value.")
+Comment.create("user"=>"1", "question"=>"5", "reply"=>nil, "votes"=>nil, "value"=>"Internet has pretty huge database on naming your new born. Have a look!!")
+Comment.create("user"=>"1", "question"=>"4", "reply"=>nil, "votes"=>nil, "value"=>"Just be yourself.")
+Reply.create("comment"=>"60", "question"=>1, "user"=>3, "value"=>"Thanks a lot @sbhatore95. I will subscribe the channel.")
+Reply.create("comment"=>"60", "question"=>1, "user"=>2, "value"=>"Is this channel really good?")
+Reply.create("comment"=>"62", "question"=>2, "user"=>1, "value"=>"Thank you @khandelwal. Maybe I am not trying my best. I will work harder now.")
+Reply.create("comment"=>"60", "question"=>1, "user"=>1, "value"=>"Yes, please do !! @loremipsum")
