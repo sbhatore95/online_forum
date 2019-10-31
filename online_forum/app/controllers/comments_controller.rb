@@ -35,6 +35,13 @@ class CommentsController < ApplicationController
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
+    question = Question.find(@comment.question)
+    if question.comments != nil && question.comments != "" 
+      question.update(comments: question.comments + "," + @comment.id.to_s)
+    else
+      question.update(comments: @comment[:id])
+    end
+    question.save
   end
 
   # PATCH/PUT /comments/1
@@ -69,6 +76,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:user, :question, :reply, :votes)
+      params.require(:comment).permit(:user, :question, :reply, :votes, :value)
     end
 end

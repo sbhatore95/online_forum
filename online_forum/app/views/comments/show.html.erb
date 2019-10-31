@@ -1,24 +1,29 @@
+<% if current_user %>
+  Logged in as <%= current_user.email %>.
+  <%= link_to "Log Out", logout_path %>
+  <%= link_to "Ask Question", ask_path %>
+  <%= link_to 'Your Questions', questions_path %>
+  <%= link_to 'All Questions', showall_path %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @comment.user %>
-</p>
-
-<p>
+<h3><%= User.find(Question.find(@comment.question)[:user])[:name] %> <small> asked</small></h3>
+<h1>
   <strong>Question:</strong>
-  <%= @comment.question %>
+  <%= Question.find(@comment.question)[:value] %>
+</h1>
+<p>
+  <strong><%= User.find(@comment.user)[:name] %>:</strong>
+  <%= @comment.value %>
 </p>
-
 <p>
   <strong>Reply:</strong>
   <%= @comment.reply %>
 </p>
 
-<p>
-  <strong>Votes:</strong>
-  <%= @comment.votes %>
-</p>
+<!--<%= link_to 'Edit', edit_comment_path(@comment) %> |-->
+<!--<%= link_to 'Back', comments_path %>-->
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<% else %>
+  <%= link_to "Sign Up", signup_path %> or 
+  <%= link_to "Log In", login_path %>
+<% end %>

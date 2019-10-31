@@ -12,9 +12,20 @@
 <% if current_user.id.to_s == @question.user.to_s %>
 <%= link_to 'Edit', edit_question_path(@question) %>
 <% end %>
+<div>
+	<%= render 'form1', comment: @comment %>
+</div>
 <p>
-  <strong>Comments:</strong>
-  <%= @question.comments %>
+  <h3>Comments:</h3>
+  <% if @question.comments %>
+  <% arr = @question.comments.split(',') %>
+  <% arr.each do |id| %>
+  <div>
+    <strong> <%= User.find(Comment.find(id)[:user])[:name] %> </strong>
+    <%= Comment.find(id)[:value] %>
+  </div>
+  <% end %>
+  <% end %>
 </p>
 
 <% else %>

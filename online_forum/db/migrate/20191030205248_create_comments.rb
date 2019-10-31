@@ -5,8 +5,10 @@ class CreateComments < ActiveRecord::Migration[5.2]
       t.string :question
       t.string :reply
       t.integer :votes
+      t.string :value
 
       t.timestamps
+      drop_table :comments
     end
   end
 end

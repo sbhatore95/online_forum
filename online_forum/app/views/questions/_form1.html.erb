@@ -12,7 +12,14 @@
   <% end %>
 
   <div class="field">
-    
+    <%= form.hidden_field :user, value: current_user.id %>
+  </div>
+  <div class="field">
+    <%= form.label :your_comment %>
+    <%= form.text_area :value, size: "45x8" %>
+  </div>
+   <div class="field">
+    <%= form.hidden_field :question, value: @question.id %>
   </div>
 
   <div class="actions">

@@ -17,6 +17,7 @@ class CommentsTest < ApplicationSystemTestCase
     fill_in "Question", with: @comment.question
     fill_in "Reply", with: @comment.reply
     fill_in "User", with: @comment.user
+    fill_in "Value", with: @comment.value
     fill_in "Votes", with: @comment.votes
     click_on "Create Comment"
 
@@ -31,6 +32,7 @@ class CommentsTest < ApplicationSystemTestCase
     fill_in "Question", with: @comment.question
     fill_in "Reply", with: @comment.reply
     fill_in "User", with: @comment.user
+    fill_in "Value", with: @comment.value
     fill_in "Votes", with: @comment.votes
     click_on "Update Comment"
 

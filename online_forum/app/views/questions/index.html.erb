@@ -23,7 +23,13 @@
     <% if question.user.to_s == current_user.id.to_s %>
       <tr>
         <td><%= question.value %></td>
-        <td><%= question.comments %></td>
+        
+        <td>
+          <% if question.comments %>
+          <%= question.comments.split(',').count() %>
+          <% end %>
+        </td>
+
         <td><%= question.votes %></td>
         <td><%= link_to 'Show', question %></td>
         <td><%= link_to 'Edit', edit_question_path(question) %></td>

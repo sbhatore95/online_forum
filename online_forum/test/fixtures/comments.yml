@@ -5,9 +5,11 @@ one:
   question: MyString
   reply: MyString
   votes: 1
+  value: MyString
 
 two:
   user: MyString
   question: MyString
   reply: MyString
   votes: 1
+  value: MyString
