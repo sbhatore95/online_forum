@@ -11,10 +11,9 @@ User Online Forum.
 cd online_forum
 ```
 
-2. Run the following commands:
+2. Run the following commands to install gem dependencies and starting the server:
 ```bash
 bundle install
-gem install rspec
 rails s
 ```
 
