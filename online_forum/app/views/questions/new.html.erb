@@ -1,12 +1,16 @@
+<div class="container">
+<div>
 <% if current_user %>
-  Logged in as <%= current_user.email %>.
-  <%= link_to "Log Out", logout_path %>
-  <%= link_to "Ask Question", ask_path %>
-  <%= link_to 'Your Questions', questions_path %>
-  <%= link_to 'All Questions', showall_path %>
-<h1>New Question</h1>
+  Logged in as <%= current_user.email %>. &nbsp &nbsp &nbsp &nbsp
+  <%= link_to "Log Out", logout_path %> &nbsp
+  <%= link_to "Ask Question", ask_path %> &nbsp
+  <%= link_to 'My Questions', questions_path %> &nbsp
+  <%= link_to 'All Questions', showall_path %>  
+</div><br><br>
+<h1 class="title">New Question</h1>
 <%= render 'form', question: @question %>
 <% else %>
   <%= link_to "Sign Up", signup_path %> or 
   <%= link_to "Log In", login_path %>
 <% end %>
+</div>

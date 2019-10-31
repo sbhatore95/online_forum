@@ -15,10 +15,10 @@
   </div>
   <div class="field">
     <%= form.label :your_question %>
-    <%= form.text_area :value, size: "45x8" %>
+    <%= form.text_area :value, size: "45x8", class: 'textarea' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.button :submit, class: "button is-primary" %>
   </div>
 <% end %>

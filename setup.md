@@ -36,9 +36,9 @@ gem install bundler
 ```
 2. **Installing Rails**
 
-We will install the Rails 6.0.0
+We will install the Rails 5.2.0
 ```bash
-gem install rails -v 6.0.0
+gem install rails -v 5.2.0
 ```
 Run the following command to make the rails executable available:
 ```bash

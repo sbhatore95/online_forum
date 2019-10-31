@@ -1,20 +1,22 @@
+<div class="container">
+<div>
 <% if current_user %>
-  Logged in as <%= current_user.email %>.
-  <%= link_to "Log Out", logout_path %>
-  <%= link_to "Ask Question", ask_path %>
-  <%= link_to 'Your Questions', questions_path %>
-  <%= link_to 'All Questions', showall_path %>
+  Logged in as <%= current_user.email %>. &nbsp &nbsp &nbsp &nbsp
+  <%= link_to "Log Out", logout_path %> &nbsp
+  <%= link_to "Ask Question", ask_path %> &nbsp
+  <%= link_to 'My Questions', questions_path %> &nbsp
+  <%= link_to 'All Questions', showall_path %>  
+</div><br><br>
 <p id="notice"><%= notice %></p>
 
-<h1>Questions</h1>
+<h1 class="title">Questions</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Username</th>
       <th>Question</th>
       <th>Comments</th>
-      <th>Votes</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,8 +26,13 @@
       <tr>
         <td><%= User.find(question.user)[:name] %></td>
         <td><%= question.value %></td>
-        <td><%= question.comments %></td>
-        <td><%= question.votes %></td>
+        <td>
+          <% if question.comments %>
+            <%= question.comments.split(',').count() %>
+            <% else %>
+            <%= 0 %>
+            <% end %>
+        </td>
         <td><%= link_to 'Show', question %></td>
       </tr>
     <% end %>
@@ -38,3 +45,4 @@
   <%= link_to "Sign Up", signup_path %> or 
   <%= link_to "Log In", login_path %>
 <% end %>
+</div>

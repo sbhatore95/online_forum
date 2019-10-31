@@ -1,34 +1,49 @@
+<div class="container">
+<div>
 <% if current_user %>
-  Logged in as <%= current_user.email %>.
-  <%= link_to "Log Out", logout_path %>
-  <%= link_to "Ask Question", ask_path %>
-  <%= link_to 'Your Questions', questions_path %>
-  <%= link_to 'All Questions', showall_path %>
+  Logged in as <%= current_user.email %>. &nbsp &nbsp &nbsp &nbsp
+  <%= link_to "Log Out", logout_path %> &nbsp
+  <%= link_to "Ask Question", ask_path %> &nbsp
+  <%= link_to 'My Questions', questions_path %> &nbsp
+  <%= link_to 'All Questions', showall_path %>  
+</div><br><br>
 <p id="notice"><%= notice %></p>
-
-<h1>
+<h5 class="title is-5"> <%= User.find(@question.user)[:name] %> <h8> asked </h8> </h5>
+<h1 class="title">
   <%= @question.value %>
 </h1>
-<% if current_user.id.to_s == @question.user.to_s %>
-<%= link_to 'Edit', edit_question_path(@question) %>
-<% end %>
 <div>
-	<%= render 'form1', comment: @comment %>
+	<%= render 'questions/form1', comment: @comment %>
 </div>
 <p>
-  <h3>Comments:</h3>
+  <h5 class="title is-5">Comments:</h3>
   <% if @question.comments %>
   <% arr = @question.comments.split(',') %>
   <% arr.each do |id| %>
   <div>
     <strong> <%= User.find(Comment.find(id)[:user])[:name] %> </strong>
-    <%= Comment.find(id)[:value] %>
-  </div>
+    <%= Comment.find(id)[:value] %><br>
+    <% parse = Comment.find(id)[:reply] %>
+    <% if parse %>
+      <% replies = parse.split(',') %>
+      <% replies.each do |reply| %>
+        <div>
+          >>>
+          <strong><%= User.find(Reply.find(reply)[:user])[:name] %> </strong>  
+          <%= Reply.find(reply)[:value] %>
+        </div>
+      <% end %>
+    <% end %>
+    <%= link_to 'Reply', reply_comment_path(:comment_id => id) %> &nbsp
+    <% if Comment.find(id)[:user].to_s == current_user.id.to_s %>
+      <%= link_to 'Delete', Comment.find(id), controller: "comments", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </div><br>
   <% end %>
   <% end %>
 </p>
-
 <% else %>
   <%= link_to "Sign Up", signup_path %> or 
   <%= link_to "Log In", login_path %>
 <% end %>
+</div>

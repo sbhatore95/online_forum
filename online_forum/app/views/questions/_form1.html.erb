@@ -1,4 +1,4 @@
-<%= form_with(model: comment, local: true) do |form| %>
+<%= form_with(model: comment, remote: true) do |form| %>
   <% if comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -16,13 +16,13 @@
   </div>
   <div class="field">
     <%= form.label :your_comment %>
-    <%= form.text_area :value, size: "45x8" %>
+    <%= form.text_area :value, size: "45x8", class: 'textarea' %>
   </div>
    <div class="field">
     <%= form.hidden_field :question, value: @question.id %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.button :submit, class: "button is-primary" %>
   </div>
 <% end %>

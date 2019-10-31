@@ -28,20 +28,20 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
+        question = Question.find(@comment.question)
+        if question.comments != nil && question.comments != "" 
+          question.update(comments: question.comments + "," + @comment.id.to_s)
+        else
+          question.update(comments: @comment[:id])
+        end
+        question.save
+        @question = question
+        format.html {redirect_to '/questions/'+question.id.to_s }
       else
         format.html { render :new }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
-    question = Question.find(@comment.question)
-    if question.comments != nil && question.comments != "" 
-      question.update(comments: question.comments + "," + @comment.id.to_s)
-    else
-      question.update(comments: @comment[:id])
-    end
-    question.save
   end
 
   # PATCH/PUT /comments/1
@@ -62,8 +62,17 @@ class CommentsController < ApplicationController
   # DELETE /comments/1.json
   def destroy
     @comment.destroy
+    question = Question.find(@comment[:question])
+    parse = question[:comments].split(',')
+    parse.delete(@comment[:id].to_s)
+    ans = ""
+    parse.each do |p|
+      ans = ans + p
+    end
+    question[:comments] = ans
+    question.save
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to '/questions/'+@comment.question, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
