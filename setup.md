@@ -56,3 +56,5 @@ If an error comes after running  which says "FATAL: Listen error: unable to moni
 ```bash
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 ```
+
+If an error like this occurs "HTTP parse error, malformed request (): #<Puma::HttpParserError: Invalid HTTP format, parsing fails.>", then clear your browser cache and cookies and restart the browser. It will work.
