@@ -28,3 +28,5 @@ rails s
 ```
 
 5. Rails server is up and running now. You can visit the application at https://localhost:3000
+
+6. You can login using email: 'sbhatore95@gmail.com', password: 'iiit123' or signup using your own email.
