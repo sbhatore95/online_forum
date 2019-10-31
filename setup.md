@@ -12,14 +12,11 @@ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo 
-tee /etc/apt/sources.list.d/yarn.list
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
 sudo apt-get update
 
-sudo apt-get install git-core zlib1g-dev build-essential libssl-dev 
-libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev 
-libcurl4-openssl-dev software-properties-common libffi-dev nodejs yarn
+sudo apt-get install git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev nodejs yarn
 ```
 Next, we are going to install Ruby using rbenv
 ```bash
@@ -69,8 +66,7 @@ You are good to go. Read **README** file for information on how to run the appli
 
 If an error comes after running  which says "FATAL: Listen error: unable to monitor directories for changes.". Then, run the following (Note that this is one whole command and not two commands):
 ```bash
-echo fs.inotify.max_user_watches=524288 | 
-sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 ```
 
 If an error like this occurs "HTTP parse error, malformed request (): #<Puma::HttpParserError: Invalid HTTP format, parsing fails.>", then clear your browser cache and cookies and restart the browser. It will work.
